@@ -1,6 +1,6 @@
 /* eslint-disable unicorn/prevent-abbreviations */
 /* eslint-disable unicorn/prefer-module */
-const child_process = require("node:child_process");
+const { execSync } = require("node:child_process");
 
 /**
  * Template tag that returns a password from MacOS security
@@ -18,13 +18,13 @@ module.exports.templateTags = [
     },
     args: [
       {
-        displayName: "Account",
-        description: "Match account string.",
+        displayName: "Service/server",
+        description: "Match service or server string.",
         type: "string",
       },
       {
-        displayName: "Service/server",
-        description: "Match service or server string.",
+        displayName: "Account",
+        description: "Match account string.",
         type: "string",
       },
       {
@@ -38,7 +38,7 @@ module.exports.templateTags = [
         ],
       },
     ],
-    async run(_context, account, service, passwordType) {
+    async run(_context, service, account, passwordType) {
       // find-generic-password [-h] [-a account] [-s service] [-options...] [-g] [-keychain...] Find a generic password item.
       //
       //  -a account      Match account string
@@ -71,12 +71,13 @@ module.exports.templateTags = [
       // -w              Display the password(only) for the item found
 
       const args = [];
-      if (account && account.length > 0) {
-        args.push("-a", `"${account}"`);
-      }
 
       if (service && service.length > 0) {
         args.push("-s", `"${service}"`);
+      }
+
+      if (account && account.length > 0) {
+        args.push("-a", `"${account}"`);
       }
 
       if (args.length === 0) {
@@ -86,7 +87,7 @@ module.exports.templateTags = [
       args.push("-w");
 
       try {
-        child_process.execSync("which security", {
+        execSync("which security", {
           encoding: "utf8",
         });
       } catch {
@@ -95,7 +96,7 @@ module.exports.templateTags = [
         );
       }
 
-      const token = child_process.execSync(
+      const token = execSync(
         `security find-${passwordType}-password ${args.join(" ")}`,
         { encoding: "utf8" }
       );

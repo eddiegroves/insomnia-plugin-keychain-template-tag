@@ -1,22 +1,22 @@
 {
   "name": "insomnia-plugin-keychain-template-tag",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": "Eddie Groves <npm@eddiegroves.com>",
   "description": "Insomnia plugin to find password values from Keychain.",
   "license": "Apache-2.0",
   "main": "main.js",
   "type": "commonjs",
+  "homepage": "https://github.com/eddiegroves/insomnia-plugin-keychain-template-tag",
   "insomnia": {
-    "name": "keychain",
+    "name": "keychain-template-tag",
     "displayName": "Keychain template tag plugin",
     "images": {
       "icon": "icon.svg"
     },
-    "description": "Find a password from Keychain.",
+    "description": "Find a password from MacOS Keychain.",
     "publisher": {
       "name": "Eddie Groves"
-    },
-    "unlisted": false
+    }
   },
   "publishConfig": {
     "registry": "https://registry.npmjs.org"

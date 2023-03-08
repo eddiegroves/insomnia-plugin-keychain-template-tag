@@ -3,15 +3,36 @@
 This is a plugin for [Insomnia](https://insomnia.rest) that provides a template
 tag for finding passwords stored in **MacOS Keychain**.
 
+**This avoids putting secrets into Insomnia in plain text.**
+
 The plugin will call the `security` command, matching on account and/or
 service/server to return a generic or internet password. The `security` command
 must be available in PATH of the defautl shell.
 
-## Install
+Available on NPM registry:
+[insomnia-plugin-keychain-template-tag](https://www.npmjs.com/package/insomnia-plugin-keychain-template-tag)
 
-Insomnia Preferences > Plugins:
+## Installation using Insomnia
 
-`insomnia-plugin-keychain-template-tag`
+To add an Insomnia plugin, go to Preferences in Insomnia. Then click the Plugins
+tab. Enter the name `insomnia-plugin-keychain-template-tag` then click Install
+Plugin.
+
+## Installation using Git
+
+Nvigate to the following location on your machine and `git clone` the repository:
+
+- MacOS: `~/Library/Application Support/Insomnia/plugins/`
+
+```sh
+git clone https://github.com/eddiegroves/insomnia-plugin-keychain-template-tag.git
+```
+
+## Uninstallation
+
+To remove an Insomnia Plugin permanently, navigate to the following location on your machine and delete the plugin folder manually:
+
+- MacOS: `~/Library/Application Support/Insomnia/plugins/`
 
 ## MacOS only
 
